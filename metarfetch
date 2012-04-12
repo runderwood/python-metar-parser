@@ -1,0 +1,6 @@
+#!/bin/sh
+
+
+python /home/runderwood/metar/metar/__init__.py fetch kbos kmsp ymml cyul kdca 1> /home/runderwood/fm2279.com/metar/metar-`date +%Y%m%d-%H%M`.tsv
+
+sort /home/runderwood/fm2279.com/metar/metar-*.tsv | uniq > /home/runderwood/fm2279.com/metar/all.tsv

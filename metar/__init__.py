@@ -39,7 +39,7 @@ class Parser:
 if __name__ == "__main__":
 
     def usage():
-        print "metar [fetch stn [stn...]]"
+        sys.stderr.write("metar [fetch stn [stn...]]\n")
 
     if len(sys.argv) < 2:
         usage()
@@ -57,5 +57,9 @@ if __name__ == "__main__":
                 ds, ms = rawparts(fetchcurrent(stn))
                 d = dateparse(ds)
                 print "%s\t%s" % (d, ms)
-            except:
-                sys.stderr.write("couldn't fetch: %s\n" % (stn,))
+            except Exception as e:
+                print e
+                sys.stderr.write("couldn't fetch: %s (%s)\n" % (stn,e))
+    else:
+        usage()
+        sys.exit(1)
