@@ -1,6 +1,7 @@
 #!/bin/sh
 
+#set METARCITIES="kbos kmsp ymml cyul kdca"
 
-python /home/runderwood/metar/metar/__init__.py fetch kbos kmsp ymml cyul kdca 1> /home/runderwood/fm2279.com/metar/metar-`date +%Y%m%d-%H%M`.tsv
+python "${HOME}${METARDIR}"/metar/__init__.py fetch "${METARCITIES}" 1> "${HOME}${METARDIR}"/metar-`date +%Y%m%d-%H%M`.tsv
 
-sort /home/runderwood/fm2279.com/metar/metar-*.tsv | uniq > /home/runderwood/fm2279.com/metar/all.tsv
+sort "${HOME}${METARDIR}"/metar/metar-*.tsv" | uniq > "${HOME}${METARDIR}"/metar/all.tsv
